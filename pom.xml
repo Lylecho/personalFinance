@@ -66,6 +66,48 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>2.4.1</version>
+                <executions>
+                    <execution>
+                        <id>l4j-gui</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>gui</headerType>
+                            <outfile>target/PersonalFinanceManager.exe</outfile>
+                            <jar>target/finance-manager-${project.version}-jar-with-dependencies.jar</jar>
+                            <errTitle>Personal Finance Manager</errTitle>
+                            <classPath>
+                                <mainClass>com.personal.finance.MainApp</mainClass>
+                            </classPath>
+                            <jre>
+                                <path>%JAVA_HOME%</path>
+                                <minVersion>1.8.0</minVersion>
+                                <bundledJre64Bit>false</bundledJre64Bit>
+                                <bundledJreAsFallback>false</bundledJreAsFallback>
+                                <jdkPreference>preferJre</jdkPreference>
+                                <runtimeBits>64/32</runtimeBits>
+                            </jre>
+                            <versionInfo>
+                                <fileVersion>1.0.0.0</fileVersion>
+                                <txtFileVersion>${project.version}</txtFileVersion>
+                                <fileDescription>Personal Finance Manager</fileDescription>
+                                <copyright>Personal Finance Manager 2024</copyright>
+                                <productVersion>1.0.0.0</productVersion>
+                                <txtProductVersion>${project.version}</txtProductVersion>
+                                <productName>Personal Finance Manager</productName>
+                                <internalName>PersonalFinanceManager</internalName>
+                                <originalFilename>PersonalFinanceManager.exe</originalFilename>
+                            </versionInfo>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
